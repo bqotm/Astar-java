@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28a02a2e-d2ad-4e3a-829e-79dbaa116df2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Cell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ViewerPanel.java" afterDir="false" />
+    <list default="true" id="28a02a2e-d2ad-4e3a-829e-79dbaa116df2" name="Changes" comment="ok, everything works but need refactoring">
+      <change afterPath="$PROJECT_DIR$/flag.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Util.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ViewerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ViewerPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +44,12 @@
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bqotm\Downloads\Codebase\A-star-algorithm" />
+      <recent name="C:\Users\bqotm\Downloads\Codebase\A-star-algorithm\src\main\java" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -70,6 +73,14 @@
       <option name="presentableId" value="Default" />
       <updated>1697920543232</updated>
     </task>
+    <task id="LOCAL-00001" summary="ok, everything works but need refactoring">
+      <created>1697993201007</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1697993201008</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -82,5 +93,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ok, everything works but need refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="ok, everything works but need refactoring" />
   </component>
 </project>

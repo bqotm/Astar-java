@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +9,11 @@ public class Cell extends JButton {
     Cell previous;
     int col, row;
     int g, h, f;
-    boolean start = false;
-    boolean goal = false;
-    boolean solid;
-    boolean open;
-    boolean checked;
+    boolean isStart = false;
+    boolean isGoal = false;
+    boolean isSolid;
+    boolean isOpen;
+    boolean isChecked;
 
     boolean isPath;
 
@@ -30,48 +28,43 @@ public class Cell extends JButton {
     }
 
     public void setStart() {
-        setBackground(Color.blue);
-        setForeground(Color.white);
-        setText("S");
-        this.start=true;
-        this.solid=false;
+        this.setIcon(Util.getIcon("start.png", this));
+        this.isStart=true;
+        this.isSolid=false;
     }
 
     public void setGoal() {
-        setBackground(Color.RED);
-        setForeground(Color.BLACK);
-        setText("X");
-        this.goal=true;
-        this.solid=false;
+        this.setIcon(Util.getIcon("flag.png", this));
+        this.isGoal=true;
+        this.isSolid=false;
     }
 
     public void setSolid() {
         setBackground(Color.black);
         setForeground(Color.black);
-        this.solid=true;
+        this.isSolid=true;
     }
 
     public void setIsOpen() {
-        if(start == false && goal == false && checked == false){
+        if(isStart == false && isGoal == false && isChecked == false){
             setBackground(Color.LIGHT_GRAY);
             setForeground(Color.black);
-
         }
-        this.open=true;
+        this.isOpen=true;
     }
 
     public void setChecked() {
-        if(start==false && goal==false) {
+        if(isStart==false && isGoal==false) {
             setBackground(Color.orange);
             setForeground(Color.black);
         }
-        checked = true;
+        this.isChecked = true;
     }
 
     public void setAsPath() {
         setBackground(Color.green);
         setForeground(Color.black);
-        isPath = true;
+        this.isPath = true;
     }
 
 

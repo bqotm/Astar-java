@@ -11,7 +11,7 @@ public class ViewerPanel extends JPanel {
 
     int COLS=30;
     int ROWS=30;
-    int NODE_SIZE = 25;
+    int NODE_SIZE = 27;
     int WIDTH = NODE_SIZE * COLS;
     int HEIGHT = NODE_SIZE * ROWS;
 
@@ -46,7 +46,7 @@ public class ViewerPanel extends JPanel {
                     search();
                     publish(); // Publishes intermediate results to update the UI
                     try {
-                        Thread.sleep(100); // Adjust the sleep duration as needed
+                        Thread.sleep(50); // Adjust the sleep duration as needed
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -86,9 +86,6 @@ public class ViewerPanel extends JPanel {
                 this.add(grid[i][j]);
             }
         }
-        //setStartCell(9, 9);
-        //setGoalCell(1, 2);
-
     }
 
     public void setStartCell(int col, int row) {
@@ -107,20 +104,10 @@ public class ViewerPanel extends JPanel {
 
     }
 
-    private void setSolidCell(int col, int row) {
-        grid[col][row].setSolid();
+    private int calculateHcost(Cell cell) {//heuristic : euclidean squared seems faster
+        return Util.euclideanDistanceSquared(cell, goalCell);
     }
 
-
-    private void calculateHcost(Cell cell) {//heuristic : manhattan distance
-        int h = Math.abs(cell.col-goalCell.col) + Math.abs(cell.row - goalCell.row);
-        cell.h=h;
-    }
-
-    private int calculateFcost(Cell cell) {
-        calculateHcost(cell);
-        return cell.g + cell.h ;
-    }
 
     public void search() {
         if(openList.size()>0 && !goalReached) {
@@ -130,8 +117,9 @@ public class ViewerPanel extends JPanel {
             addNeighbours(col, row);
             currentCell.setChecked();
             for(Cell neighbour : currentCell.neighbours) {
+                neighbour.h = calculateHcost(neighbour);
                 neighbour.g = currentCell.g + 1;
-                neighbour.f = calculateFcost(neighbour);
+                neighbour.f = neighbour.g + neighbour.h;
                 if(checkedList.contains(neighbour))
                     continue;
                 if(containsWithLowerPriority(neighbour))
@@ -167,7 +155,7 @@ public class ViewerPanel extends JPanel {
     }
 
     private void openCell(Cell cell) {
-        if(cell.open == false && cell.checked == false && cell.solid == false) {
+        if(cell.isOpen == false && cell.isChecked == false && cell.isSolid == false) {
             cell.setIsOpen();
         }
     }
@@ -182,20 +170,20 @@ public class ViewerPanel extends JPanel {
     }
 
     private void addNeighbours(int i, int j) {
-        if(!grid[i][j].solid){
-            if(i>=1 && !grid[i-1][j].solid && !grid[i-1][j].checked && !grid[i-1][j].open) {
+        if(!grid[i][j].isSolid){
+            if(i>=1 && !grid[i-1][j].isSolid && !grid[i-1][j].isChecked && !grid[i-1][j].isOpen) {
                 openCell(grid[i-1][j]);
                 grid[i][j].neighbours.add(grid[i-1][j]);
             }
-            if(j>=1 && !grid[i][j-1].solid && !grid[i][j-1].checked && !grid[i][j-1].open) {
+            if(j>=1 && !grid[i][j-1].isSolid && !grid[i][j-1].isChecked && !grid[i][j-1].isOpen) {
                 grid[i][j].neighbours.add(grid[i][j-1]);
                 openCell(grid[i][j-1]);
             }
-            if(i+1<COLS && !grid[i + 1][j].solid && !grid[i + 1][j].checked && !grid[i + 1][j].open) {
+            if(i+1<COLS && !grid[i + 1][j].isSolid && !grid[i + 1][j].isChecked && !grid[i + 1][j].isOpen) {
                 grid[i][j].neighbours.add(grid[i + 1][j]);
                 openCell(grid[i + 1][j]);
             }
-            if(j+1<ROWS && !grid[i][j+1].solid && !grid[i][j+1].checked && !grid[i][j+1].open) {
+            if(j+1<ROWS && !grid[i][j+1].isSolid && !grid[i][j+1].isChecked && !grid[i][j+1].isOpen) {
                 grid[i][j].neighbours.add(grid[i][j+1]);
                 openCell(grid[i][j+1]);
             }
